@@ -1,0 +1,22 @@
+﻿<Window x:Class="TechSupport.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TechSupport"
+        xmlns:viewmodel="clr-namespace:TechSupport.ViewModels"
+        mc:Ignorable="d"
+        Title="Technical Support" Height="114" Width="328.4" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Width="150" Height="75" Content="Ticket Aç" Command="{Binding ShowNewTicketComm}" />
+        <Button Grid.Column="1" Width="150" Height="75" Content="Ticket Yanıtla" Command="{Binding ShowUserLoginComm}" />
+    </Grid>
+</Window>

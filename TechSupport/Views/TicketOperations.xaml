@@ -1,0 +1,38 @@
+﻿<Window x:Class="TechSupport.Views.TicketOperations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:TechSupport.ViewModels"
+        xmlns:local="clr-namespace:TechSupport.Views"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="{Binding User.UserName,StringFormat=Hoş Geldiniz {0}}" Height="730.4" Width="1261.6" WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <viewmodel:TicketOperationsViewModel />
+    </Window.DataContext>
+    <Grid>
+
+
+        <dxg:GridControl Name="dataGrid" ItemsSource="{Binding ModelTicketList}"
+                         SelectedItem="{Binding SelectedItem}"
+                         AutoGenerateColumns="AddNew"
+                         EnableSmartColumnsGeneration="True"
+                         Margin="0,0,220.2,297.8"  >
+
+            <dxg:GridControl.View>
+                <dxg:TableView ShowSearchPanelMode="Always" ShowTotalSummary="True"/>
+            </dxg:GridControl.View>
+            <dxg:GridControl.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Çözüldü Olarak İşaretle" Command="{Binding UpdateTicketSolved}"/>
+                </ContextMenu>
+            </dxg:GridControl.ContextMenu>
+        </dxg:GridControl>
+
+        <DataGrid ItemsSource="{Binding MostTicketSolvedUsers}" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="354" Margin="1040,49,0,0" VerticalAlignment="Top" Width="205"/>
+        <Label Content="En Çok Problem Çözenler" HorizontalAlignment="Left" Margin="1040,10,0,0" VerticalAlignment="Top" FontSize="18"/>
+    </Grid>
+</Window>
